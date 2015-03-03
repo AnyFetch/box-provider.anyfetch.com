@@ -34,6 +34,11 @@ module.exports = {
   appId: process.env.ANYFETCH_API_ID,
   appSecret: process.env.ANYFETCH_API_SECRET,
 
+  box: {
+    api: process.env.BOX_API_ID,
+    secret: process.env.BOX_API_SECRET
+  },
+
   opbeat: {
     organizationId: process.env.OPBEAT_ORGANIZATION_ID,
     appId: process.env.OPBEAT_APP_ID,
