@@ -31,7 +31,7 @@
     "jscs": "^1.11.3",
     "jshint": "^2.6.0",
     "mocha": "2.1.x",
-    "should": "5.0.x",
+    "should": "^5.0.1",
     "supertest": "0.15.x"
   },
   "licence": "MIT",
