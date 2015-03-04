@@ -25,6 +25,7 @@
     "async": "^0.9.0",
     "crypto": "0.0.3",
     "dotenv": "^0.5.1",
+    "rarity": "^2.1.1",
     "supertest": "^0.15.0"
   },
   "devDependencies": {
