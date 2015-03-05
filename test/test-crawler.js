@@ -1,7 +1,6 @@
 'use strict';
 
 require('should');
-var nock = require('nock');
 
 var update = require('../lib/update.js');
 var config = require('../config/configuration.js');
@@ -14,6 +13,8 @@ describe("Testing the crawler", function() {
   };
 
   before(function(done) {
+    var nock = require('nock');
+
     nock('https://api.box.com:443')
     .post('/oauth2/token', "grant_type=refresh_token&refresh_token=fake_token&client_secret=" + config.box.secret + "&client_id=" + config.box.api)
     .reply(200, {
