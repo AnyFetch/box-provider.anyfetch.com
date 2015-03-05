@@ -13,12 +13,12 @@
   "main": "./lib/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOU/PROVIDER_NAME.provider.example.com"
+    "url": "https://github.com/anyfetch/box-provider.anyfetch.com"
   },
   "keywords": [
     "anyfetch",
     "provider",
-    "PROVIDER"
+    "box"
   ],
   "dependencies": {
     "anyfetch-provider": "^3.1.0",
