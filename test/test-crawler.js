@@ -26,6 +26,7 @@ describe("Testing the crawler", function() {
   .reply(200, {
     access_token: 'fake_access'
   });
+
   it('should require a new token', function(done) {
     update({refresh_token: 'fake_token'}, null, fakeQueue, function(err) {
       done(err);
