@@ -1,28 +1,28 @@
 {
-  "name": "anyfetch-PROVIDER_NAME-PROVIDER",
+  "name": "box-provider.anyfetch.com",
   "version": "0.1.0",
-  "author": "You <you@example.com>",
+  "author": "Antonhansel antoninribeaud@gmail.com",
   "bin": {
     "server": "./bin/server"
   },
   "scripts": {
     "start": "node ./bin/server",
     "test": "NODE_ENV=test mocha -R spec -t 25000",
-    "lint": "jshint bin/ config/ lib/ test/ app.js && jscs bin/ config/ lib/ test/ app.js"
+    "lint": "jshint bin/ config/ lib/ app.js && jscs bin/ config/ lib/ app.js"
   },
   "main": "./lib/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOU/PROVIDER_NAME.provider.example.com"
+    "url": "https://github.com/anyfetch/box-provider.anyfetch.com"
   },
   "keywords": [
     "anyfetch",
     "provider",
-    "PROVIDER"
+    "box"
   ],
   "dependencies": {
     "anyfetch-provider": "^3.1.0",
-    "async": "^0.9.0",
+    "async": "git://github.com/Antonhansel/async.git",
     "crypto": "0.0.3",
     "dotenv": "^0.5.1",
     "rarity": "^2.1.1",
@@ -32,6 +32,7 @@
     "jscs": "^1.11.3",
     "jshint": "^2.6.0",
     "mocha": "2.1.x",
+    "nock": "^1.0.0",
     "should": "^5.0.1",
     "supertest": "0.15.x"
   },
