@@ -7,7 +7,6 @@ var config = require('../config/configuration.js');
 
 
 describe("Testing the crawler", function() {
-
   var fakeQueue = {
     addition: []
   };
