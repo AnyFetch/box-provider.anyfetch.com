@@ -21,7 +21,7 @@ describe("Testing the delete event", function() {
 
     // mocking the very dummy call event
     nock('https://api.box.com:443')
-    .get('/2.0//events?stream_position=1')
+    .get('/2.0/events?stream_position=1')
     .reply(200, {
       "next_stream_position": "1",
       "entries": [{

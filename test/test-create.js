@@ -21,7 +21,7 @@ describe("Testing the create/upload event", function() {
 
     // mocking the event call
     nock('https://api.box.com:443')
-    .get('/2.0//events?stream_position=1')
+    .get('/2.0/events?stream_position=1')
     .reply(200, {
       "next_stream_position": "1",
       "entries": [{

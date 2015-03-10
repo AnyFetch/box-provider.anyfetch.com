@@ -21,7 +21,7 @@ describe("Testing the move event", function() {
 
     // mocking the event call
     nock('https://api.box.com:443')
-    .get('/2.0//events?stream_position=1')
+    .get('/2.0/events?stream_position=1')
     .reply(200, {
       "next_stream_position": "1",
       "entries": [{
@@ -41,7 +41,7 @@ describe("Testing the move event", function() {
 
     // mock the folder crawling
     nock('https://api.box.com:443')
-    .get('/2.0//folders/11')
+    .get('/2.0/folders/11')
     .reply(200, {
       "item_collection": {
         "entries": [
