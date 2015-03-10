@@ -7,7 +7,8 @@ var config = require('../config/configuration.js');
 
 describe("Testing the crawler", function() {
   var fakeQueue = {
-    addition: []
+    addition: [],
+    deletion: []
   };
 
   before(function(done) {
@@ -74,7 +75,7 @@ describe("Testing the crawler", function() {
   });
 
   // it('should refresh the previous token, and call /event right away.', function(done) {
-  //   update({refresh_token: 'fake_token'}, null, fakeQueue, function(err) {
+  //   update({refresh_token: 'fake_token', cursor: 0, next_stream_position: 1}, null, fakeQueue, function(err) {
   //     fakeQueue.addition.length.should.equal(2);
   //     done(err);
   //   });
