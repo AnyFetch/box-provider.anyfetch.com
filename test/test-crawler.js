@@ -61,7 +61,7 @@ describe("Testing the crawler", function() {
     done();
   });
 
-  it('should require a new token and get the root folder', function(done) {
+  it('should require a new token, get the root folder and make the first /event call', function(done) {
     update({refresh_token: 'fake_token'}, null, fakeQueue, function(err) {
       fakeQueue.addition.length.should.equal(2);
       done(err);
