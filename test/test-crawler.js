@@ -7,12 +7,12 @@ var config = require('../config/configuration.js');
 
 describe("Testing the crawler", function() {
   var fakeQueue = {
-    addition: []
+    addition: [],
+    deletion: []
   };
 
   before(function(done) {
     var nock = require('nock');
-    // nock.recorder.rec();
     // mocking the refresh token request
     nock('https://api.box.com:443')
     .post('/oauth2/token', "grant_type=refresh_token&refresh_token=fake_token&client_secret=" + config.box.secret + "&client_id=" + config.box.api)
@@ -56,14 +56,19 @@ describe("Testing the crawler", function() {
     // mocking the very first event call
     nock('https://api.box.com:443')
     .get('/2.0//events?stream_position=now')
-    .reply(200, {});
+    .reply(200, {
+      "next_stream_position": "1"
+    });
 
     done();
   });
 
-  it('should require a new token and get the root folder', function(done) {
-    update({refresh_token: 'fake_token'}, null, fakeQueue, function(err) {
-      fakeQueue.addition.length.should.equal(2);
+  it('should require a new token, get the root folder and make the first /event call', function(done) {
+    update({refresh_token: 'fake_token'}, null, fakeQueue, function(err, cursor, serviceData) {
+      cursor.should.not.equal(null);
+      serviceData.access_token.should.equal('fake_access');
+      serviceData.next_stream_position.should.equal('1');
+      fakeQueue.addition.should.have.lengthOf(2);
       done(err);
     });
   });
