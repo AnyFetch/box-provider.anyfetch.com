@@ -13,7 +13,6 @@ describe("Testing the crawler", function() {
 
   before(function(done) {
     var nock = require('nock');
-    // nock.recorder.rec();
     // mocking the refresh token request
     nock('https://api.box.com:443')
     .post('/oauth2/token', "grant_type=refresh_token&refresh_token=fake_token&client_secret=" + config.box.secret + "&client_id=" + config.box.api)
@@ -73,11 +72,4 @@ describe("Testing the crawler", function() {
       done(err);
     });
   });
-
-  // it('should refresh the previous token, and call /event right away.', function(done) {
-  //   update({refresh_token: 'fake_token', cursor: 0, next_stream_position: 1}, null, fakeQueue, function(err) {
-  //     fakeQueue.addition.length.should.equal(2);
-  //     done(err);
-  //   });
-  // });
 });
