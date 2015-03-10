@@ -5,7 +5,6 @@ require('should');
 var update = require('../lib/update.js');
 var config = require('../config/configuration.js');
 
-
 describe("Testing the crawler", function() {
   var fakeQueue = {
     addition: []
@@ -13,13 +12,15 @@ describe("Testing the crawler", function() {
 
   before(function(done) {
     var nock = require('nock');
-
+    // nock.recorder.rec();
+    // mocking the refresh token request
     nock('https://api.box.com:443')
     .post('/oauth2/token', "grant_type=refresh_token&refresh_token=fake_token&client_secret=" + config.box.secret + "&client_id=" + config.box.api)
     .reply(200, {
       access_token: 'fake_access'
     });
 
+    // mocking the root folder crawling
     nock('https://api.box.com:443')
     .get('/2.0//folders/0')
     .reply(200, {
@@ -38,6 +39,7 @@ describe("Testing the crawler", function() {
       }
     });
 
+    // mocking the subfolder crawling
     nock('https://api.box.com:443')
     .get('/2.0//folders/1')
     .reply(200, {
@@ -50,6 +52,12 @@ describe("Testing the crawler", function() {
         ],
       }
     });
+
+    // mocking the very first event call
+    nock('https://api.box.com:443')
+    .get('/2.0//events?stream_position=now')
+    .reply(200, {});
+
     done();
   });
 
