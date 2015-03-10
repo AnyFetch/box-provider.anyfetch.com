@@ -41,7 +41,7 @@ describe("Testing the delete event", function() {
       cursor.should.not.equal(null);
       serviceData.access_token.should.equal('fake_access');
       serviceData.next_stream_position.should.equal('1');
-      fakeQueue.deletion.length.should.equal(1);
+      fakeQueue.deletion.should.have.lengthOf(1);
       fakeQueue.deletion[0].identifier.should.equal('10');
       done(err);
     });

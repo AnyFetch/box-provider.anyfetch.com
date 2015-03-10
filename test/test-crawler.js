@@ -68,7 +68,7 @@ describe("Testing the crawler", function() {
       cursor.should.not.equal(null);
       serviceData.access_token.should.equal('fake_access');
       serviceData.next_stream_position.should.equal('1');
-      fakeQueue.addition.length.should.equal(2);
+      fakeQueue.addition.should.have.lengthOf(2);
       done(err);
     });
   });
