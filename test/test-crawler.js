@@ -56,15 +56,27 @@ describe("Testing the crawler", function() {
     // mocking the very first event call
     nock('https://api.box.com:443')
     .get('/2.0//events?stream_position=now')
-    .reply(200, {});
+    .reply(200, {
+      "next_stream_position": "1"
+    });
 
     done();
   });
 
   it('should require a new token, get the root folder and make the first /event call', function(done) {
-    update({refresh_token: 'fake_token'}, null, fakeQueue, function(err) {
+    update({refresh_token: 'fake_token'}, null, fakeQueue, function(err, cursor, serviceData) {
+      cursor.should.not.equal(null);
+      serviceData.access_token.should.equal('fake_access');
+      serviceData.next_stream_position.should.equal('1');
       fakeQueue.addition.length.should.equal(2);
       done(err);
     });
   });
+
+  // it('should refresh the previous token, and call /event right away.', function(done) {
+  //   update({refresh_token: 'fake_token'}, null, fakeQueue, function(err) {
+  //     fakeQueue.addition.length.should.equal(2);
+  //     done(err);
+  //   });
+  // });
 });
