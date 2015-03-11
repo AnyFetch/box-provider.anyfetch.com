@@ -31,12 +31,14 @@ describe("Testing the create/upload event", function() {
           "id": "10"
           }
         },
-        {"event_type": "ITEM_UPLOAD",
-        "source": {
-          "type": "file",
-          "id": "11"
+        {
+          "event_type": "ITEM_UPLOAD",
+          "source": {
+            "type": "file",
+            "id": "11"
+          }
         }
-      }]
+      ]
     });
 
     done();
