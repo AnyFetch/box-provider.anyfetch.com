@@ -31,7 +31,8 @@ describe("Testing the duplicated event remover", function() {
           "id": "10"
           }
         },
-        {"event_type": "ITEM_CREATE",
+        {
+        "event_type": "ITEM_CREATE",
         "source": {
           "type": "file",
           "id": "10"
@@ -45,10 +46,10 @@ describe("Testing the duplicated event remover", function() {
   it('should keep only one of the two events', function(done) {
     update({refresh_token: 'fake_token', next_stream_position: '1'}, null, fakeQueue, function(err, cursor, serviceData) {
       cursor.should.not.equal(null);
-      serviceData.access_token.should.equal('fake_access');
-      serviceData.next_stream_position.should.equal('1');
+      serviceData.should.have.property('access_token', 'fake_access');
+      serviceData.should.have.property('next_stream_position', '1');
       fakeQueue.addition.should.have.lengthOf(1);
-      fakeQueue.addition[0].id.should.equal('10');
+      fakeQueue.addition[0].should.have.property('id', '10');
       done(err);
     });
   });

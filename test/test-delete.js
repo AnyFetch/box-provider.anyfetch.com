@@ -36,7 +36,7 @@ describe("Testing the delete event", function() {
     done();
   });
 
-  it('Should add one file to the deletion queue', function(done) {
+  it('should add one file to the deletion queue', function(done) {
     update({refresh_token: 'fake_token', next_stream_position: '1'}, null, fakeQueue, function(err, cursor, serviceData) {
       cursor.should.not.equal(null);
       serviceData.access_token.should.equal('fake_access');
