@@ -22,7 +22,7 @@ describe("Testing the crawler", function() {
 
     // mocking the root folder crawling
     nock('https://api.box.com:443')
-    .get('/2.0//folders/0')
+    .get('/2.0/folders/0')
     .reply(200, {
       "item_collection": {
         "entries": [{
@@ -41,7 +41,7 @@ describe("Testing the crawler", function() {
 
     // mocking the subfolder crawling
     nock('https://api.box.com:443')
-    .get('/2.0//folders/1')
+    .get('/2.0/folders/1')
     .reply(200, {
       "item_collection": {
         "entries": [{
@@ -55,7 +55,7 @@ describe("Testing the crawler", function() {
 
     // mocking the very first event call
     nock('https://api.box.com:443')
-    .get('/2.0//events?stream_position=now')
+    .get('/2.0/events?stream_position=now')
     .reply(200, {
       "next_stream_position": "1"
     });
