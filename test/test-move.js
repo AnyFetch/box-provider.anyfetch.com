@@ -31,7 +31,8 @@ describe("Testing the move event", function() {
           "id": "10"
           }
         },
-        {"event_type": "ITEM_MOVE",
+        {
+        "event_type": "ITEM_MOVE",
         "source": {
           "type": "folder",
           "id": "11"
@@ -66,11 +67,12 @@ describe("Testing the move event", function() {
     update({refresh_token: 'fake_token', next_stream_position: '1'}, null, fakeQueue, function(err, cursor, serviceData) {
       cursor.should.not.equal(null);
       serviceData.access_token.should.equal('fake_access');
-      serviceData.next_stream_position.should.equal('1');
+      serviceData.should.have.property('next_stream_position', '1');
       fakeQueue.addition.should.have.lengthOf(3);
-      fakeQueue.addition[0].id.should.equal('10');
-      fakeQueue.addition[1].id.should.equal('1');
-      fakeQueue.addition[2].id.should.equal('2');
+      fakeQueue.addition.should.have.lengthOf(3);
+      fakeQueue.addition[0].should.have.property('id', '10');
+      fakeQueue.addition[1].should.have.property('id', '1');
+      fakeQueue.addition[2].should.have.property('id', '2');
       done(err);
     });
   });
